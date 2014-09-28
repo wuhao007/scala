@@ -1,24 +1,12 @@
 package recfun
-import common._
 
-object Main {
-  def main(args: Array[String]) {
-    println("Pascal's Triangle")
-    for (row <- 0 to 10) {
-      for (col <- 0 to row)
-        print(pascal(col, row) + " ")
-      println()
-    }
-  }
-
-  /**
-   * Exercise 1
-   */
+object session {
+  println("Welcome to the Scala worksheet")       //> Welcome to the Scala worksheet
   def pascal(c: Int, r: Int): Int = if (c == 0 || r == 0 || c == r) 1 else pascal(c-1, r-1) + pascal(c, r - 1)
-
-  /**
-   * Exercise 2
-   */
+                                                  //> pascal: (c: Int, r: Int)Int
+  pascal(0,2)                                     //> res0: Int = 1
+  pascal(1,2)                                     //> res1: Int = 2
+  pascal(1,3)                                     //> res2: Int = 3
   def balance(chars: List[Char]): Boolean = {
     def balance_sub(chars: List[Char], num: Int): Boolean = {
       if (num < 0) {
@@ -36,11 +24,10 @@ object Main {
       }
     }
     balance_sub(chars, 0)
-  }                                         
-
-  /**
-   * Exercise 3
-   */
+  }                                               //> balance: (chars: List[Char])Boolean
+  balance("(if (zero? x) max (/ 1 x))".toList)    //> res3: Boolean = true
+  balance(":-)".toList)                           //> res4: Boolean = false
+  balance("())(".toList)                          //> res5: Boolean = false
   def countChange(money: Int, coins: List[Int]): Int = {
     def countChange_sub(money: Int, coins: List[Int]): Int = {
       if (money == 0) {
@@ -54,5 +41,6 @@ object Main {
       }
     }
     countChange_sub(money, coins.sorted)
-  }                   
+  }                                               //> countChange: (money: Int, coins: List[Int])Int
+  countChange(4, List(1,2))                       //> res6: Int = 3
 }
