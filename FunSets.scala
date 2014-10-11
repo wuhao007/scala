@@ -54,10 +54,9 @@ object FunSets {
    * Returns whether all bounded integers within `s` satisfy `p`.
    */
   def forall(s: Set, p: Int => Boolean): Boolean = {
-    def f = filter(s, x => !p(x))
     def iter(a: Int): Boolean = {
       if (a > bound) true
-      else if (f(a)) false
+      else if (filter(s, x => !p(x))(a)) false
       else iter(a + 1)
     }
     iter(-bound)
